@@ -1,0 +1,41 @@
+{
+    "name": "@ohos/suite-connector-ability",
+    "description": "suite-connector-ability",
+    "version": "1.0",
+    "license": "Apache V2",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "third_party/suite-connector-ability"
+    },
+    "dirs": {},
+    "scripts": {},
+    "licensePath": "LICENSE",
+    "readmePath": {
+        "en": "README.md"
+    },
+    "component": {
+        "name": "suite-connector-ability",
+        "subsystem": "thirdparty",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [],
+        "rom": "200KB",
+        "ram": "7130KB",
+        "deps": {
+            "components": [
+                "hiviewdfx_hilog_native",
+                "ipc",
+                "samgr_standard",
+                "utils_base"
+            ],
+            "third_party": [ "libxml2" ]
+        },
+        "build": {
+            "sub_component": [
+                "//third_party/suite-connector-ability:suite-connector-ability"
+            ],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}

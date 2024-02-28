@@ -12,9 +12,12 @@
 
 package main
 
+import "C"
+
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -75,6 +78,20 @@ func run(ctx context.Context, factory app.LaunchFactory, args []string) error {
 
 func main() {
 	if err := run(context.Background(), newLauncher, os.Args[1:]); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			os.Exit(0)
+		}
+		if errors.Is(err, flags.ErrParse) {
+			os.Exit(2)
+		}
+
+		log.Fatalf("Cannot run suite connector: %v", err)
+	}
+}
+
+//export StartSuiteConnector
+func StartSuiteConnector(configFile string) {
+	if err := run(context.Background(), newLauncher, []string{fmt.Sprintf("--configFile=%s", configFile)}); err != nil {
 		if errors.Is(err, flag.ErrHelp) {
 			os.Exit(0)
 		}

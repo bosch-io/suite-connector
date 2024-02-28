@@ -1,0 +1,7 @@
+import("//build/ohos/sa_profile/sa_profile.gni")
+ohos_sa_profile("suite-connector_sa_profile") {
+    sources = [
+        "20000.xml"
+    ]
+    subsystem_name = "thirdparty"
+}
